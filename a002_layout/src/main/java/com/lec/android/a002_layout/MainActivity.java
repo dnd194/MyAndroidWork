@@ -11,6 +11,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.linear);
         int sss = 100;
-        String tt = "하하호호히히";
+        String tt = "오에에에에에에에";
     }
 }
