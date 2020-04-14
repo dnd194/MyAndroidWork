@@ -27,7 +27,9 @@
         android:text="Button"
         app:layout_constraintEnd_toStartOf="@+id/guideline7"
         app:layout_constraintStart_toStartOf="@+id/guideline8"
-        app:layout_constraintTop_toTopOf="@+id/guideline4" />
+        app:layout_constraintTop_toTopOf="@+id/guideline4"
+        android:background="@color/colorPrimaryDark"
+        android:textColor="#ffffff"/>
 
     <Button
         android:id="@+id/button14"
@@ -72,7 +74,9 @@
         android:id="@+id/button15"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:background="#000000"
         android:text="Button"
+        android:textColor="#4CAF50"
         app:layout_constraintBottom_toTopOf="@+id/guideline9"
         app:layout_constraintEnd_toStartOf="@+id/guideline7"
         app:layout_constraintHorizontal_bias="0.0"
