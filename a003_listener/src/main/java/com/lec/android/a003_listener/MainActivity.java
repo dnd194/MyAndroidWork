@@ -39,7 +39,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         et = findViewById(R.id.et);
         LinearLayout ll = findViewById(R.id.ll);    // effective final or final 로 하는 경우가있음
 
-
         // 방법 2 : 익명클래스 (anonymous class) 사용
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,7 +46,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Log.d("myapp", "버튼2가 클릭되었습니다");
                 tvResult.setText("버튼 2가 클릭");
                 tvResult.setBackgroundColor(Color.BLUE);
-
 
             }
         });
@@ -102,7 +100,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Log.d("myapp", msg);
                 tvResult.setText(msg);
                 et.setText(et.getText().append(name));  //기존의 텍스트에 추가해서 set
-
 
             }
         }
