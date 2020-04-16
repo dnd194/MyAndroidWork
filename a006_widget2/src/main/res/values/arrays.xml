@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="city">
+        <item>서울</item>
+        <item>뉴역</item>
+        <item>페리</item>
+        <item>헝컹</item>
+        <item>런든</item>
+
+    </string-array>
+
+</resources>
