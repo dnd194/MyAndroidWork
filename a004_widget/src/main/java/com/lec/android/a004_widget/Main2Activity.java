@@ -50,6 +50,7 @@ public class Main2Activity extends AppCompatActivity {
                int sum = num1+num2;
                result = String.format("%d",sum);
                tvResult.setText(result);
+
             }
         });
         btnMinus.setOnClickListener(new View.OnClickListener() {
