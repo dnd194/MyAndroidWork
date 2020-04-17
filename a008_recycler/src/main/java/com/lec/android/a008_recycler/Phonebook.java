@@ -1,6 +1,8 @@
 package com.lec.android.a008_recycler;
 
-public class Phonebook{
+import java.io.Serializable;
+
+public class Phonebook implements Serializable {
 
     int photo;//사진
     String name; //이름

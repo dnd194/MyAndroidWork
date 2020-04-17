@@ -1,11 +1,16 @@
 package com.lec.android.a008_recycler;
 
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -23,12 +28,13 @@ public class PhonebookAdapter extends RecyclerView.Adapter<PhonebookAdapter.View
     // Adapter가 데이터에 연결되어야 하는 것은 사실이나, 데이터를 Adapter를 직접 다룰지
     // 아니면 별도의 데이터 관리는 따로 하는 구조로 만들지는 선택의 몫
     // 본 예제에서는 Adapter 안에 직접 데이터를 다루어보겠습니다
+    static PhonebookAdapter adapter;
 
     List<Phonebook> items = new ArrayList<Phonebook>();
 
     //adapter 생성자
 
-    public PhonebookAdapter() {
+    public PhonebookAdapter() {this.adapter = this;
     }//기본 생성자
 
 
@@ -87,7 +93,8 @@ public class PhonebookAdapter extends RecyclerView.Adapter<PhonebookAdapter.View
         //ViewHolder 에 담긴 각각의 View 들을 담을 변수
         ImageView ivPhoto;
         TextView tvName, tvPhone, tvEmail;
-
+        ImageButton btnDelItem;
+        Switch swOnOff;
 
         public ViewHolder(@NonNull View itemView) {      //생성자 필수
 
@@ -99,6 +106,51 @@ public class PhonebookAdapter extends RecyclerView.Adapter<PhonebookAdapter.View
             tvName = itemView.findViewById(R.id.tvName);
             tvPhone = itemView.findViewById(R.id.tvPhone);
             tvEmail = itemView.findViewById(R.id.tvEmail);
+            btnDelItem = itemView.findViewById(R.id.btnDelItem);
+            swOnOff = itemView.findViewById(R.id.swOnOff);
+
+            //switch 리스터 장착  ==> 전화번호와 이메일 숨기기/ 보이기
+            swOnOff.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if(isChecked){
+                        tvPhone.setVisibility(View.INVISIBLE);
+                        tvEmail.setVisibility(View.INVISIBLE);
+                    }else{
+                        tvPhone.setVisibility(View.VISIBLE);
+                        tvEmail.setVisibility(View.VISIBLE);
+                    }
+                }
+            });
+
+
+            //삭제버튼 누르면 item 삭제되게 하기
+            btnDelItem.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //position의 정보가 필요함 -> 어디서 가져올거야??  ->  꼼수를 쓸거야 -> adapter 생성자 위에 static으로 만들거임
+                    //adapter 로부터 데이터 삭제도 진행되어야함
+                    adapter.removeItem(getAdapterPosition()); //==> 데이터 삭제
+                    //데이터를 지우고 어뎁터에도 반영을 해줘야함 (데이터변경 내역 ) 그래야지 정삭적으로 동작함 ********
+                    adapter.notifyDataSetChanged(); // 이거한번 이면 가능 꼭해줘야함******8
+
+                }
+
+            });
+
+            //클릭 리스너 장착  (전체에 대한)
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int position = getAdapterPosition();  //이 리스너가 장착된 item의 리스트상의 position 값
+//                    Toast.makeText(v.getContext(),"position"+ position, Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(v.getContext(), PhonebookDetail.class);
+                    intent.putExtra("pb",adapter.getItem(position));
+                    v.getContext().startActivity(intent);
+                    //액티비티가 아닌곳에서 객체를 끄집어 낼때 v.getContext()
+
+                }
+            });
 
         }//end 생성자
 
