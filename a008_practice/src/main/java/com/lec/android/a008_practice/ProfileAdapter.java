@@ -23,7 +23,7 @@ public class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.ViewHold
 
     @NonNull
     @Override
-    public ProfileAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inf = LayoutInflater.from(parent.getContext());
 
         View itemView = inf.inflate(R.layout.item, parent, false);
@@ -41,6 +41,7 @@ public class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.ViewHold
     public int getItemCount() {
         return items.size();
     }
+
     static class ViewHolder extends RecyclerView.ViewHolder {
         TextView tvName, tvAddr, tvAge;
         ImageButton btnDel;
@@ -65,9 +66,9 @@ public class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.ViewHold
         }
             public void setItem(Profile item){
 
-                tvName.setText(item.getName());
-                tvAddr.setText(item.getAddr());
-                tvAge.setText(item.getAge());
+                tvName.setText(item.getName().toString());
+                tvAddr.setText(item.getAddr().toString());
+                tvAge.setText(String.format("%d",item.getAge()));
             }
 
 
