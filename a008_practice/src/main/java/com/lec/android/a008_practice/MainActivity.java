@@ -13,7 +13,7 @@ public class MainActivity extends AppCompatActivity {
 
     ProfileAdapter adapter;
     RecyclerView rv;
-    static EditText et,et2,et3;
+    EditText et,et2,et3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,10 +43,11 @@ public class MainActivity extends AppCompatActivity {
 
     }
     protected void appendData(View v){
-        Profile.name = et.getText().toString().trim();
-        Profile.addr = et3.getText().toString().trim();
-        Profile.age  = Integer.parseInt(et2.getText().toString().trim());
-        adapter.addItem(0,new Profile(Profile.name, Profile.addr, Profile.age));
+//        et.getText().toString().trim();
+//         et3.getText().toString().trim();
+//         Integer.parseInt(et2.getText().toString().trim());
+        adapter.addItem(0,new Profile(et.getText().toString().trim(),et3.getText().toString().trim(),
+                Integer.parseInt(et2.getText().toString().trim()) ));
         adapter.notifyDataSetChanged();  // 추가했으니 리스트에  *** 반영을 해야함 ***
     }
 }

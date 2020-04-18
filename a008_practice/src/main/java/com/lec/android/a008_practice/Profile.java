@@ -3,9 +3,9 @@ package com.lec.android.a008_practice;
 import java.io.Serializable;
 
 public class Profile implements Serializable {
-    static String name;
-    static String addr;
-    static int age;
+     String name;
+     String addr;
+     int age;
 
     public Profile() {
     }
