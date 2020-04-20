@@ -37,6 +37,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 appendData(v);
+                et.setText("");
+                et2.setText("");
+                et3.setText("");
             }
         });
 
