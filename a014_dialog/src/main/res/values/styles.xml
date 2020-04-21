@@ -8,4 +8,11 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <!-- AlertDialog 예제 스타일-->
+    <style name="AlertDialogCustom" parent="@android:style/Theme.Dialog">
+                            <!-- parent : ~~ 기본 안드로이드 스타일을 상속받음-->
+        <item name="android:textColor">#42A5F5</item>
+        <item name="android:typeface">monospace</item>
+        <item name="android:textSize">18sp</item>
+    </style>
 </resources>
