@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     }//end oncreate
+
     // onCreateOptionsMenu()
 // '옵션메뉴'버튼이 '처음' 눌러졌을 때 실행되는 메소드
 // 메뉴버튼을 눌렀을 때 보여줄 menu 에 대해서 정의
@@ -79,6 +80,20 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         Log.d("myapp","onOptionsItemSelected - 메누 항목을 클릭했을때 호출");
         showInfo(item);
+
+        //#2 특정 MenuItem에 대한 동작
+        //각 색상이 눌렸을때
+        switch (item.getItemId()){
+            case MENUITEM_YELLOW:
+                ll.setBackgroundResource(R.color.bgColorYello);
+                break;
+            case MENUITEM_ORANGE:
+                ll.setBackgroundResource(R.color.bgColorOrange);
+                break;
+            case MENUITEM_CYAN:
+                ll.setBackgroundResource(R.color.bgColorCyan);
+                break;
+        }
         return true;
     }
 

@@ -3,4 +3,9 @@
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
+
+    <!-- 색상 리소스-->
+    <color name="bgColorYello">#FFEB3B</color>
+    <color name="bgColorOrange">#EE6D31</color>
+    <color name="bgColorCyan">#10F5F1</color>
 </resources>
