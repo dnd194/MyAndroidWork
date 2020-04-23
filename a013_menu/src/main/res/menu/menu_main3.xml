@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/menu_refresh"
+        android:title="새로고침"
+        app:showAsAction="always"
+        android:icon="@drawable/menu_refresh"/>
+    <!--<item
+        android:id="@+id/menu_search"
+        android:icon="@drawable/menu_search"
+        android:title="검색"
+        app:showAsAction="always"/>  -->
+    <item
+        android:id="@+id/menu_setting"
+        android:title="설정"
+        app:showAsAction="always"
+        android:icon="@drawable/menu_settings"/>
+    <item
+        android:id="menu_alarm"
+        android:title="알람"
+        android:icon="@drawable/ic_alarm_black_18dp"
+        app:showAsAction="always">
+
+    </item>
+    <item
+        android:id="@+id/menu_search"
+        android:orderInCategory="102"
+        android:title="검색"
+        app:actionLayout="@layout/search_layout"
+        app:showAsAction="always"/>
+
+    <!--android:actionLayout 은 동작 하지 않음
+                                app:actionLayout 으로 해줄것-->
+
+
+</menu>

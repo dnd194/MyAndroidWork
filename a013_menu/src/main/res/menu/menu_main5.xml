@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- 서브 메뉴 만들기-->
+    <item
+        android:id="@+id/w"
+        android:title="subMenu_1">
+        <menu>
+            <item android:title="apple"></item>
+            <item android:title="banana"></item>
+            <item android:title="kiwi"></item>
+        </menu>
+    </item>
+    <item
+        android:id="@+id/d"
+        android:title="subMenu_2"
+        >
+        <menu>
+            <item android:title="사과"></item>
+            <item android:title="배"></item>
+            <item android:title="수박"></item>
+        </menu>
+
+    </item>
+    <item
+        android:id="@+id/c"
+        android:title="subMenu_3">
+
+    </item>
+
+</menu>
