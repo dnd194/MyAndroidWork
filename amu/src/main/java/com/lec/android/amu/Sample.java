@@ -1,9 +1,6 @@
-package com.lec.android.a008_recycler;
+package com.lec.android.amu;
 
-
-// sample data
-public class D {
-
+public class Sample {
     public static int [] FACEID = {
             R.drawable.face01,
             R.drawable.face02,
@@ -28,14 +25,14 @@ public class D {
             R.drawable.face21
     };
 
-    public static final String [] NAME = {
+    public static final String [] DUST = {
             "아이언맨", "캡틴아메리카", "헐크", "블랙위도우", "팔콘", "울트론",
             "로키", "토르", "그루트", "스타로드", "비젼", "앤트맨", "윈터솔져",
             "로난", "토끼", "스파이더맨", "호크아이", "워머신", "가모라", "베놈",
             "디스트로이어"
     };
 
-    public static final String [] PHONE = {
+    public static final String [] FINEDUST = {
             "001-1111-1111",
             "002-1111-1111",
             "003-1111-1111",
@@ -59,36 +56,10 @@ public class D {
             "021-1111-1111"
     };
 
-    public static final String [] EMAIL = {
-            "001@mail.com",
-            "002@mail.com",
-            "003@mail.com",
-            "004@mail.com",
-            "005@mail.com",
-            "006@mail.com",
-            "007@mail.com",
-            "008@mail.com",
-            "009@mail.com",
-            "010@mail.com",
-            "011@mail.com",
-            "012@mail.com",
-            "013@mail.com",
-            "014@mail.com",
-            "015@mail.com",
-            "016@mail.com",
-            "017@mail.com",
-            "018@mail.com",
-            "019@mail.com",
-            "020@mail.com",
-            "021@mail.com"
-    };
     private static int idx = 0;
 
-    public static int next(){   //무한반복을 시켜주기 위한 method
+    public static int next(){
         idx = idx % FACEID.length;
-        return idx++;  //idx 값을 return 하고 1 증가
+        return idx++;
     }
-
-
-
-}//end D
+}
