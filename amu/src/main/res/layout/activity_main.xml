@@ -12,19 +12,58 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/textView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="오늘의 대기 환경"
+            android:text="지역구 날짜별 대기 환경"
             android:layout_marginTop="20dp"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:background="@drawable/radius"
             android:gravity="center_horizontal"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:orientation="horizontal"
+            android:padding="8dp"
+            android:weightSum="5">
+            <EditText
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/etDate"
+                android:hint="ex)   200428"
+
+                android:textColorHint="#94A395"
+                android:layout_weight="2">
+
+            </EditText>
+            <EditText
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/etRegion"
+                android:hint="ex)   서초구"
+
+                android:textColorHint="#94A395"
+                android:layout_weight="2">
+
+            </EditText>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/btnSearch"
+                android:elevation="8dp"
+                android:background="@drawable/btn_radius2"
+                android:text="검색"
+                android:layout_weight="1">
+
+            </Button>
+
+
+        </LinearLayout>
     </LinearLayout>
 
     <ScrollView
