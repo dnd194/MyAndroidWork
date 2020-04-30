@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-    }
+    }//end onCreate
     protected void appendData(View v){
 //        et.getText().toString().trim();
 //         et3.getText().toString().trim();
@@ -52,5 +52,5 @@ public class MainActivity extends AppCompatActivity {
         adapter.addItem(0,new Profile(et.getText().toString().trim(),et3.getText().toString().trim(),
                 Integer.parseInt(et2.getText().toString().trim()) ));
         adapter.notifyDataSetChanged();  // 추가했으니 리스트에  *** 반영을 해야함 ***
-    }
-}
+    }//end
+}//end Activity

@@ -35,11 +35,11 @@
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/etDate"
-                android:hint="ex)   200428"
                 android:text="200202"
                 android:inputType="number"
                 android:textColorHint="#94A395"
                 android:layout_weight="2">
+<!--                android:hint="ex)   200428"-->
 
             </EditText>
             <EditText

@@ -43,7 +43,7 @@ public class AirAdapter extends RecyclerView.Adapter<AirAdapter.ViewHolder> {
     static class ViewHolder extends RecyclerView.ViewHolder{
 
         ImageView ivGu;
-        TextView tvDust, tvFinedDust;
+        TextView tvDust, tvFinedDust, tvRegion;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -51,12 +51,14 @@ public class AirAdapter extends RecyclerView.Adapter<AirAdapter.ViewHolder> {
             ivGu = itemView.findViewById(R.id.ivGu);
             tvDust =itemView.findViewById(R.id.tvDust);
             tvFinedDust =itemView.findViewById(R.id.tvFineDust);
+            tvRegion = itemView.findViewById(R.id.tvRegion);
         }
 
         public void setItem(Air item){
             ivGu.setImageResource(item.getPhoto());
             tvDust.setText(item.getDust());
             tvFinedDust.setText(item.getFineDust());
+            tvRegion.setText(item.getRegion());
         }
 
     }//end ViewHolder

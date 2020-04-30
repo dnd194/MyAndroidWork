@@ -5,18 +5,24 @@ import java.io.Serializable;
 public class Air implements Serializable {
 
     int photo;
+    String region;
     String dust; //미세먼지
     String fineDust; //초미세먼지
-    String region;
 
     public Air() {
     }
 
-    public Air(int photo, String dust, String fineDust, String region) {
+    public Air(int photo, String region, String dust, String fineDust) {
         this.photo = photo;
+        this.region = region;
         this.dust = dust;
         this.fineDust = fineDust;
+    }
+
+    public Air(String region, String dust, String fineDust) {
         this.region = region;
+        this.dust = dust;
+        this.fineDust = fineDust;
     }
 
     public int getPhoto() {

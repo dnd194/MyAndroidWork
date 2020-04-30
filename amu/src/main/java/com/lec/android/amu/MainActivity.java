@@ -30,7 +30,7 @@ import java.net.URL;
 //http://data.seoul.go.kr/dataList/OA-2217/S/1/datasetView.do
 public class MainActivity extends AppCompatActivity {
     RecyclerView rv;
-    AirAdapter adapter; //
+    static AirAdapter adapter; //
     Button btnSearch;
     EditText etDate;
     static TextView test;
@@ -161,6 +161,10 @@ public class MainActivity extends AppCompatActivity {
 
                 }
             });
+            adapter.addItem(0, new Air(MSRSTE_NM,String.format("%d",PM10),String.format("%d",PM25)));
+            adapter.notifyDataSetChanged();
         }
     }//end parseJson
+
+
 }//end activity
