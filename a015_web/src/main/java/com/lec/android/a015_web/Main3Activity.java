@@ -174,13 +174,10 @@ public class Main3Activity extends AppCompatActivity {
                 @Override
                 public void run() {
 //                    tvResult.setText(statnNm + " "+ subwayId + " "+ subwayNm);
-
                     tvResult.append(statnNm + " "+ subwayId + " "+ subwayNm+"\n");
-
                 }
             });
         }
-
     }//end parseJson
     public static void parseXML(String xmlText) {
 

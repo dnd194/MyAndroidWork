@@ -36,7 +36,8 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/etDate"
                 android:hint="ex)   200428"
-
+                android:text="200202"
+                android:inputType="number"
                 android:textColorHint="#94A395"
                 android:layout_weight="2">
 
@@ -45,11 +46,11 @@
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/etRegion"
-                android:hint="ex)   서초구"
-
+                android:text="서초구"
+                android:inputType="text"
                 android:textColorHint="#94A395"
                 android:layout_weight="2">
-
+<!--                android:hint="ex)   서초구"-->
             </EditText>
             <Button
                 android:layout_width="wrap_content"
@@ -80,6 +81,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp" />
+
+            <TextView
+                android:id="@+id/test"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="TextView"
+                android:visibility="invisible"/>
+
+            <TextView
+                android:id="@+id/test2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="TextView"
+                android:visibility="invisible"/>
         </LinearLayout>
     </ScrollView>
 
