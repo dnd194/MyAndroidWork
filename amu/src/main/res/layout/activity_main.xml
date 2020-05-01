@@ -86,15 +86,15 @@
                 android:id="@+id/test"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="TextView"
                 android:visibility="invisible"/>
+<!--                android:text="TextView"-->
 
             <TextView
                 android:id="@+id/test2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="TextView"
                 android:visibility="invisible"/>
+<!--                android:text="TextView"-->
         </LinearLayout>
     </ScrollView>
 

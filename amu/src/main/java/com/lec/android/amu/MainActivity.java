@@ -23,6 +23,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+
 //http://openapi.seoul.go.kr:8088/616a757750646e643736526f415644/json/CardSubwayStatsNew/1/5/20200329
 // 인증키 6577656a42646e6437366b496a4343
 // http://openapi.seoul.go.kr:8088/6577656a42646e6437366b496a4343/json/MonthlyAverageAirQuality/1/5/200406  json 형식
@@ -36,10 +37,11 @@ public class MainActivity extends AppCompatActivity {
     static TextView test;
     static TextView test2;
     EditText etRegion;
-//    final String JsonUrl="http://openapi.seoul.go.kr:8088/616a757750646e643736526f415644/json/CardSubwayStatsNew/1/5/20200329";
+    //    final String JsonUrl="http://openapi.seoul.go.kr:8088/616a757750646e643736526f415644/json/CardSubwayStatsNew/1/5/20200329";
     final String JsonUrl = "http://openapi.seoul.go.kr:8088/6577656a42646e6437366b496a4343/json/MonthlyAverageAirQuality/1/5/";
-    static String a="";
+    static String a = "";
     Handler handler = new Handler();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,17 +72,20 @@ public class MainActivity extends AppCompatActivity {
                         request(comUrl);
                     }
                 }).start();
+                //////////////////////
                 try {
-                    final String b= test.getText().toString().trim();
-                        Log.d("myapp","1 "+b);
+                    final String b = test.getText().toString().trim();
+                    Log.d("myapp", "1 " + b);
                     parseJson(b);
 
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
+               test2.setText("");
             }
         });
     }//end OnCreate
+
     //protected void initAdapter(AirAdapter adapter){
 //        for(int i =0; i<10; i++){
 //            int idx = Sample.next();
@@ -96,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
         try {
             URL url = new URL(urlStr);
 
-            conn = (HttpURLConnection)url.openConnection();
+            conn = (HttpURLConnection) url.openConnection();
             if (conn != null) {
 
                 conn.setConnectTimeout(5000); // connect 가 수립되는시간 5초가 지나가면 에러(socketTimeOutException)
@@ -114,8 +119,16 @@ public class MainActivity extends AppCompatActivity {
                         line = reader.readLine();
                         if (line == null) break;
 //                        sb.append(line + "\n");
-                        a=sb.append(line + "\n").toString();
-                        Log.d("myapp",""+a);
+                        a = sb.append(line + "\n").toString();
+//                        Log.d("myapp",""+a);   //찍히는 거 확인용
+                        ///////////////////////////////////////
+                        handler.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                test.setText(a);
+                            }
+                        });// //end handler
+                        ////////////////////////////////////////////
                     }  // 스타일리쉬 세팅맨  //end while
                     ///////////////////////////////////////////////////////////////////////
                 }//end if
@@ -130,14 +143,15 @@ public class MainActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
         }//end finally
-        handler.post(new Runnable() {
-            @Override
-            public void run() {
-                test.setText(a);
-            }
-        });// //end handler
+//        handler.post(new Runnable() {
+//            @Override
+//            public void run() {
+//                test.setText(a);
+//            }
+//        });// //end handler
 
     }//end request
+
     public static void parseJson(String jsonText) throws JSONException {
 //        Handler handler2 = new Handler(Looper.getMainLooper());
         Handler handler2 = new Handler();
@@ -146,7 +160,7 @@ public class MainActivity extends AppCompatActivity {
 
         JSONArray row = jObj.getJSONObject("MonthlyAverageAirQuality").getJSONArray("row");  // json의 구성원?? 이름으로 뽑아냄
 //        Log.d("myapp","행의 개수"+row);
-        for(int i = 0 ; i<row.length(); i++) {
+        for (int i = 0; i < row.length(); i++) {
             JSONObject atmosphere = row.getJSONObject(i);          // row의 object 구성원을 station 이라는 변수에 담음
             final String MSRSTE_NM = atmosphere.getString("MSRSTE_NM");
             final int PM10 = atmosphere.getInt("PM10");
@@ -156,12 +170,11 @@ public class MainActivity extends AppCompatActivity {
             handler2.post(new Runnable() {
                 @Override
                 public void run() {
-                    test2.setText("");
-                    test2.append(MSRSTE_NM +" "+ PM10 + " "+ PM25);
 
+                    test2.append(MSRSTE_NM + " " + PM10 + " " + PM25);
                 }
             });
-            adapter.addItem(0, new Air(MSRSTE_NM,String.format("%d",PM10),String.format("%d",PM25)));
+            adapter.addItem(0, new Air(MSRSTE_NM, String.format("%d", PM10), String.format("%d", PM25)));
             adapter.notifyDataSetChanged();
         }
     }//end parseJson

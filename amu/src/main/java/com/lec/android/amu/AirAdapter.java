@@ -18,7 +18,7 @@ public class AirAdapter extends RecyclerView.Adapter<AirAdapter.ViewHolder> {
     List<Air> items = new ArrayList<>();
 
     public AirAdapter() {this.adapter = this;
-    }
+    }//기본생성자
 
     @NonNull
     @Override
@@ -42,8 +42,8 @@ public class AirAdapter extends RecyclerView.Adapter<AirAdapter.ViewHolder> {
 
     static class ViewHolder extends RecyclerView.ViewHolder{
 
-        ImageView ivGu;
-        TextView tvDust, tvFinedDust, tvRegion;
+        ImageView ivGu, ivStatue;
+        TextView tvDust, tvFinedDust, tvRegion , tvStatue;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -52,6 +52,8 @@ public class AirAdapter extends RecyclerView.Adapter<AirAdapter.ViewHolder> {
             tvDust =itemView.findViewById(R.id.tvDust);
             tvFinedDust =itemView.findViewById(R.id.tvFineDust);
             tvRegion = itemView.findViewById(R.id.tvRegion);
+            ivStatue = itemView.findViewById(R.id.ivStatue);   //상태이미지
+            tvStatue = itemView.findViewById(R.id.tvStatue);   //상태텍스트
         }
 
         public void setItem(Air item){
@@ -59,7 +61,27 @@ public class AirAdapter extends RecyclerView.Adapter<AirAdapter.ViewHolder> {
             tvDust.setText(item.getDust());
             tvFinedDust.setText(item.getFineDust());
             tvRegion.setText(item.getRegion());
-        }
+
+            String imageMatch= tvRegion.getText().toString().trim();
+            switch (imageMatch){
+                case "서초구":
+                    ivGu.setImageResource(R.drawable.seocho);
+            }//end switch
+
+            if(Integer.parseInt(tvDust.getText().toString().trim()) >= 90){
+                ivStatue.setImageResource(R.drawable.ic_tired_regular);
+                tvStatue.setText("진촤위험해욧");
+            }else if(Integer.parseInt(tvDust.getText().toString().trim()) >= 70){
+                ivStatue.setImageResource(R.drawable.ic_sad_tear_regular);
+                tvStatue.setText("조심해욧");
+            }else if(Integer.parseInt(tvDust.getText().toString().trim()) >= 50){
+                ivStatue.setImageResource(R.drawable.ic_meh_regular);
+                tvStatue.setText("나갈만해욧");
+            }else {
+                ivStatue.setImageResource(R.drawable.ic_smile_wink_regular);
+                tvStatue.setText("진촤 좋당");
+            }
+        }//end setItem
 
     }//end ViewHolder
     public void addItem(Air item) {  items.add(item); }
@@ -70,4 +92,4 @@ public class AirAdapter extends RecyclerView.Adapter<AirAdapter.ViewHolder> {
     public void removeItem(int position){ items.remove(position); }
 
 
-}
+}//end activity
