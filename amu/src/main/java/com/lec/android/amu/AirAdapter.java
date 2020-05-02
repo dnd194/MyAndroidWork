@@ -42,9 +42,9 @@ public class AirAdapter extends RecyclerView.Adapter<AirAdapter.ViewHolder> {
 
     static class ViewHolder extends RecyclerView.ViewHolder{
 
-        ImageView ivGu, ivStatue;
+        ImageView ivGu;
         TextView tvDust, tvFinedDust, tvRegion , tvStatue;
-
+        ImageView ivStatue;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
@@ -63,9 +63,38 @@ public class AirAdapter extends RecyclerView.Adapter<AirAdapter.ViewHolder> {
             tvRegion.setText(item.getRegion());
 
             String imageMatch= tvRegion.getText().toString().trim();
+
             switch (imageMatch){
                 case "서초구":
                     ivGu.setImageResource(R.drawable.seocho);
+                    break;
+                case "광진구":
+                    ivGu.setImageResource(R.drawable.gwangjin);
+                    break;
+                case "동대문구":
+                    ivGu.setImageResource(R.drawable.dongdeamun);
+                    break;
+                case "성동구":
+                    ivGu.setImageResource(R.drawable.sungdonggu);
+                    break;
+                case "성북구":
+                    ivGu.setImageResource(R.drawable.sungbukgu);
+                    break;
+                case "용산구":
+                    ivGu.setImageResource(R.drawable.yongsan);
+                    break;
+                case "강북구":
+                    ivGu.setImageResource(R.drawable.kangbuk);
+                    break;
+                case "중구":
+                    ivGu.setImageResource(R.drawable.junggu);
+                    break;
+                case "중랑구":
+                    ivGu.setImageResource(R.drawable.jungranggu);
+                    break;
+                case "종로구":
+                    ivGu.setImageResource(R.drawable.jongrogu);
+                    break;
             }//end switch
 
             if(Integer.parseInt(tvDust.getText().toString().trim()) >= 90){
@@ -89,7 +118,8 @@ public class AirAdapter extends RecyclerView.Adapter<AirAdapter.ViewHolder> {
     public void setItems(ArrayList<Air> items) {   this.items = items;}
     public Air getItem(int position) {   return items.get(position);}
     public void setItem(int position, Air item) {   items.set(position, item); }
-    public void removeItem(int position){ items.remove(position); }
+
+
 
 
 }//end activity

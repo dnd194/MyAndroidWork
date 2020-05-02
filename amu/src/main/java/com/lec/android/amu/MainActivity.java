@@ -111,7 +111,6 @@ public class MainActivity extends AppCompatActivity {
                 conn.setDoInput(true);  // URLConnection 을 입력으로 사용 (true) , (false) -> 출력
                 int Code = conn.getResponseCode();  // response 코드를 받아와서 성공하면 200
 
-//                Log.d("myapp", "" + conn.getResponseCode());
                 if (Code == HttpURLConnection.HTTP_OK) {  //HTTP_OK == 200
                     reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
                     String line = null;
@@ -143,12 +142,7 @@ public class MainActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
         }//end finally
-//        handler.post(new Runnable() {
-//            @Override
-//            public void run() {
-//                test.setText(a);
-//            }
-//        });// //end handler
+
 
     }//end request
 
