@@ -49,8 +49,7 @@ public class MainActivity extends AppCompatActivity {
         btnSearch = findViewById(R.id.btnSearch);
         etDate = findViewById(R.id.etDate);
         etRegion = findViewById(R.id.etRegion);
-        test = findViewById(R.id.test);
-        test2 = findViewById(R.id.test2);
+
         rv = findViewById(R.id.rv);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
 //        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(this, 2);  //그리드 레이아웃
@@ -70,66 +69,44 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         request(comUrl);
+                        handler.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                try {
+                                    parseJson(a);  //request(comurl)이 a를 반환해줌
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        });
                     }
-                }).start();
-                //////////////////////
-                try {
-                    final String b = test.getText().toString().trim();
-                    Log.d("myapp", "1 " + b);
-                    parseJson(b);
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-               test2.setText("");
-            }
+                }).start();  //end thread
+            }//end onclikc
         });
     }//end OnCreate
 
-    //protected void initAdapter(AirAdapter adapter){
-//        for(int i =0; i<10; i++){
-//            int idx = Sample.next();
-//            adapter.addItem(new Air(Sample.FACEID[idx],Sample.DUST[idx],Sample.FINEDUST[idx]));
-//        }
-//    }//end initAdapter   샘플데이터 게시용
-    public void request(String urlStr) {
+    public String request(String urlStr) {
         final StringBuilder sb = new StringBuilder();    //StringBuilder에 담을꺼임
-
         BufferedReader reader = null;
         HttpURLConnection conn = null;
-
         try {
             URL url = new URL(urlStr);
-
             conn = (HttpURLConnection) url.openConnection();
             if (conn != null) {
 
                 conn.setConnectTimeout(5000); // connect 가 수립되는시간 5초가 지나가면 에러(socketTimeOutException)
                 conn.setUseCaches(false);    // 캐시 사용 안함
                 conn.setRequestMethod("GET");  //GET 방식  request
-
                 conn.setDoInput(true);  // URLConnection 을 입력으로 사용 (true) , (false) -> 출력
                 int Code = conn.getResponseCode();  // response 코드를 받아와서 성공하면 200
-
                 if (Code == HttpURLConnection.HTTP_OK) {  //HTTP_OK == 200
                     reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
                     String line = null;
                     while (true) {
                         line = reader.readLine();
                         if (line == null) break;
-//                        sb.append(line + "\n");
                         a = sb.append(line + "\n").toString();
-//                        Log.d("myapp",""+a);   //찍히는 거 확인용
-                        ///////////////////////////////////////
-                        handler.post(new Runnable() {
-                            @Override
-                            public void run() {
-                                test.setText(a);
-                            }
-                        });// //end handler
-                        ////////////////////////////////////////////
-                    }  // 스타일리쉬 세팅맨  //end while
-                    ///////////////////////////////////////////////////////////////////////
+                    }  //end while
                 }//end if
             }//end if
         } catch (IOException e) {
@@ -142,32 +119,20 @@ public class MainActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
         }//end finally
-
-
+        return a;
     }//end request
 
     public static void parseJson(String jsonText) throws JSONException {
-//        Handler handler2 = new Handler(Looper.getMainLooper());
-        Handler handler2 = new Handler();
         JSONObject jObj = new JSONObject(jsonText);    // 곧바로 String  --->>> JsonObject 형태로 파싱된다
         // response 받은게 object 이기 때문
-
         JSONArray row = jObj.getJSONObject("MonthlyAverageAirQuality").getJSONArray("row");  // json의 구성원?? 이름으로 뽑아냄
-//        Log.d("myapp","행의 개수"+row);
         for (int i = 0; i < row.length(); i++) {
             JSONObject atmosphere = row.getJSONObject(i);          // row의 object 구성원을 station 이라는 변수에 담음
             final String MSRSTE_NM = atmosphere.getString("MSRSTE_NM");
             final int PM10 = atmosphere.getInt("PM10");
             final int PM25 = atmosphere.getInt("PM25");
-//            test2.append(MSRSTE_NM +" "+ PM10 + " "+ PM25);
             //받아올 변수 추가 가능
-            handler2.post(new Runnable() {
-                @Override
-                public void run() {
 
-                    test2.append(MSRSTE_NM + " " + PM10 + " " + PM25);
-                }
-            });
             adapter.addItem(0, new Air(MSRSTE_NM, String.format("%d", PM10), String.format("%d", PM25)));
             adapter.notifyDataSetChanged();
         }
