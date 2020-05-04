@@ -24,7 +24,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-//http://openapi.seoul.go.kr:8088/616a757750646e643736526f415644/json/CardSubwayStatsNew/1/5/20200329
+//http://openapi.seoul.go.kr:8088/616a757750646e643736526f415644/json/CardSubwayStatsNew/1/5/20200329 비교대상
 // 인증키 6577656a42646e6437366b496a4343
 // http://openapi.seoul.go.kr:8088/6577656a42646e6437366b496a4343/json/MonthlyAverageAirQuality/1/5/200406  json 형식
 //MonthlyAverageAirQuality 서비스명
@@ -34,8 +34,7 @@ public class MainActivity extends AppCompatActivity {
     static AirAdapter adapter; //
     Button btnSearch;
     EditText etDate;
-    static TextView test;
-    static TextView test2;
+
     EditText etRegion;
     //    final String JsonUrl="http://openapi.seoul.go.kr:8088/616a757750646e643736526f415644/json/CardSubwayStatsNew/1/5/20200329";
     final String JsonUrl = "http://openapi.seoul.go.kr:8088/6577656a42646e6437366b496a4343/json/MonthlyAverageAirQuality/1/5/";

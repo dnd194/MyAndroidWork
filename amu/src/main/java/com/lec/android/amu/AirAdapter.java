@@ -95,6 +95,19 @@ public class AirAdapter extends RecyclerView.Adapter<AirAdapter.ViewHolder> {
                 case "종로구":
                     ivGu.setImageResource(R.drawable.jongrogu);
                     break;
+                case "마포구":
+                    ivGu.setImageResource(R.drawable.mapo);
+                    break;
+                case "동작구":
+                    ivGu.setImageResource(R.drawable.dongjak);
+                    break;
+                case "영등포구":
+                    ivGu.setImageResource(R.drawable.yeongdeungpo);
+                    break;
+                case "도봉구":
+                    ivGu.setImageResource(R.drawable.dobong);
+                    break;
+
             }//end switch
 
             if(Integer.parseInt(tvDust.getText().toString().trim()) >= 90){
