@@ -136,6 +136,9 @@ public class AirAdapter extends RecyclerView.Adapter<AirAdapter.ViewHolder> {
                 case "관악구":
                     ivGu.setImageResource(R.drawable.gwanak);
                     break;
+                case "강남구":
+                    ivGu.setImageResource(R.drawable.gangnam);
+                    break;
             }//end switch
             //미세먼지 기준
             if(Integer.parseInt(tvDust.getText().toString().trim()) >= 151){
