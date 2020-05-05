@@ -107,16 +107,45 @@ public class AirAdapter extends RecyclerView.Adapter<AirAdapter.ViewHolder> {
                 case "도봉구":
                     ivGu.setImageResource(R.drawable.dobong);
                     break;
-
+                case "양천구":
+                    ivGu.setImageResource(R.drawable.yangcheon);
+                    break;
+                case "서대문구":
+                    ivGu.setImageResource(R.drawable.seodeamun);
+                    break;
+                case "구로구":
+                    ivGu.setImageResource(R.drawable.guro);
+                    break;
+                case "은평구":
+                    ivGu.setImageResource(R.drawable.eunpyeong);
+                    break;
+                case "금천구":
+                    ivGu.setImageResource(R.drawable.gumcheon);
+                    break;
+                case "강동구":
+                    ivGu.setImageResource(R.drawable.gangdong);
+                    break;
+                case "송파구":
+                    ivGu.setImageResource(R.drawable.songpa);
+                    break;
+                case "노원구":
+                    ivGu.setImageResource(R.drawable.nowon);
+                    break;
+                case "강서구":
+                    ivGu.setImageResource(R.drawable.gangseo);
+                    break;
+                case "관악구":
+                    ivGu.setImageResource(R.drawable.gwanak);
+                    break;
             }//end switch
-
-            if(Integer.parseInt(tvDust.getText().toString().trim()) >= 90){
+            //미세먼지 기준
+            if(Integer.parseInt(tvDust.getText().toString().trim()) >= 151){
                 ivStatue.setImageResource(R.drawable.ic_tired_regular);
                 tvStatue.setText("진촤위험해욧");
-            }else if(Integer.parseInt(tvDust.getText().toString().trim()) >= 70){
+            }else if(Integer.parseInt(tvDust.getText().toString().trim()) > 80){
                 ivStatue.setImageResource(R.drawable.ic_sad_tear_regular);
                 tvStatue.setText("조심해욧");
-            }else if(Integer.parseInt(tvDust.getText().toString().trim()) >= 50){
+            }else if(Integer.parseInt(tvDust.getText().toString().trim()) > 30){
                 ivStatue.setImageResource(R.drawable.ic_meh_regular);
                 tvStatue.setText("나갈만해욧");
             }else {
