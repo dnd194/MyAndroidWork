@@ -55,7 +55,6 @@ public class AirAdapter extends RecyclerView.Adapter<AirAdapter.ViewHolder> {
             ivStatue = itemView.findViewById(R.id.ivStatue);   //상태이미지
             tvStatue = itemView.findViewById(R.id.tvStatue);   //상태텍스트
         }
-
         public void setItem(Air item){
             ivGu.setImageResource(item.getPhoto());
             tvDust.setText(item.getDust());
